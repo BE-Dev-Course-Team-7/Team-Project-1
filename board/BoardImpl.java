@@ -156,6 +156,10 @@ public class BoardImpl implements BoardDao {
     }
 
     private void updateBoard(int id, Object param, String sql) {
+        //status가 ONSALE일 경우만 수정 가능
+        if (!isBoardOnSale(id)) {
+            throw new RuntimeException("게시글이 판매중이 아닙니다.");
+        }
         try (Connection conn = db.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             if (param instanceof String) {
@@ -175,8 +179,13 @@ public class BoardImpl implements BoardDao {
     }
 
 
+
     @Override
     public void deleteBoard(int id) {
+        //status가 ONSALE일 경우만 삭제 가능
+        if (!isBoardOnSale(id)) {
+            throw new RuntimeException("게시글이 판매중이 아닙니다.");
+        }
         String sql = "DELETE FROM board WHERE id = ?";
         try (Connection conn = db.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
@@ -188,5 +197,25 @@ public class BoardImpl implements BoardDao {
             e.printStackTrace();
             throw new RuntimeException("데이터베이스 오류가 발생했습니다.");
         }
+    }
+
+    private boolean isBoardOnSale(int id) {
+        String sql = "SELECT status FROM board WHERE id = ?";
+        try (Connection conn = db.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    return "ONSALE".equals(rs.getString("status"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("SQL 오류: " + e.getMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.err.println("IO 오류: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
     }
 }
