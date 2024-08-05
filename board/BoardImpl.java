@@ -1,7 +1,7 @@
 package day0805.board;
 
 
-import day0805.DBUtil;
+import day0805.db.DBUtil;
 
 import java.io.IOException;
 import java.sql.*;

@@ -1,4 +1,4 @@
-package day0805;
+package day0805.db;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class DBUtil {
     }
     public Connection getConnection() throws SQLException, IOException {
         Properties properties = new Properties();
-        try (FileInputStream input = new FileInputStream("src/day0805/db.properties")) {
+        try (FileInputStream input = new FileInputStream("src/day0805/db/db.properties")) {
             properties.load(input);
         }
 
