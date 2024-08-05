@@ -1,6 +1,6 @@
 package order;
 
-import day0805.JDBC.DatabaseConnection;
+import jdbc.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

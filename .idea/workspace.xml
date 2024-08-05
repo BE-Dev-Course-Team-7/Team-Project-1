@@ -5,32 +5,83 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="924b885b-79d4-40fe-9da2-bd4658e78cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/board/BoardListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/BoardListDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comment/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team-Project-1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team-Project-1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/BoardImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/boardHeart/BoardHeartImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/boardHeart/BoardHeartImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/comment/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/comment/CommentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/order/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/order/OrderDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/order/OrderImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/member/MemberImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/member/MemberImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/order/OrderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/order/OrderImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2kEKTvEGytXny7n4uDux8tOpg9U" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main (1).executor": "Run",
     "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/DevCourse/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/DevCourse/Team-Project-1/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="day0805.src.day0805.Main" />
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\DevCourse\Team-Project-1\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Team-Project-1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="day0805.src.day0805.*" />
@@ -41,13 +92,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="924b885b-79d4-40fe-9da2-bd4658e78cb9" name="Changes" comment="" />
+      <created>1722843306811</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722843306811</updated>
+      <workItem from="1722843307917" duration="126000" />
+      <workItem from="1722843448456" duration="1595000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

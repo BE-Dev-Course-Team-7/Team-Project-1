@@ -1,6 +1,6 @@
 package member;
 
-import day0805.JDBC.DatabaseConnection;
+import jdbc.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,13 +37,23 @@ public class MemberImpl implements MemberDao{
     public Member login(String account, String password) throws SQLException {
         Member member = null;
         try {
-            String sql = "SELECT ACCOUNT FROM MEMBER WHERE ACCOUNT=" + account + " AND PASSWORD=" + password;
+            String sql = "SELECT * FROM MEMBER WHERE ACCOUNT = ? AND PASSWORD = ?";
             conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, account);
+            pstmt.setString(2, password);
             rs = pstmt.executeQuery();
-            member = new Member();
+
+            if (rs.next()) {
+                member = new Member();
+                member.setId(rs.getInt("ID"));  // ID 값을 설정합니다.
+                member.setAccount(rs.getString("ACCOUNT"));
+                member.setPassword(rs.getString("PASSWORD"));
+                member.setName(rs.getString("NAME"));
+                member.setLocation(rs.getString("LOCATION"));
+            }
         } catch (SQLException e) {
-            System.out.println("login error");
+            System.out.println("로그인 오류");
             throw e;
         } finally {
             DatabaseConnection.close(rs, conn, pstmt);

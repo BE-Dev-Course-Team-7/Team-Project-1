@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import day0805.JDBC.DatabaseConnection;
-import day0805.src.member.Member;
+import jdbc.DatabaseConnection;
+import member.Member;
+
 
 public class CommentImpl implements CommentDao {
     private Connection conn;

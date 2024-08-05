@@ -1,6 +1,6 @@
 package boardHeart;
 
-import day0805.JDBC.DatabaseConnection;
+import jdbc.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

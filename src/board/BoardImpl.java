@@ -1,7 +1,8 @@
 package board;
 
 
-import day0805.JDBC.DatabaseConnection;
+
+import jdbc.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,14 +15,15 @@ public class BoardImpl implements BoardDao {
 
     @Override
     public void createBoard(BoardCreateDto boardCreateDto) {
-        String sql = "INSERT INTO board (member_id, price, content, category, status) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO board (member_id, title, price, content, category, status) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, boardCreateDto.getMemberId());
-            pst.setInt(2, boardCreateDto.getPrice());
-            pst.setString(3, boardCreateDto.getContent());
-            pst.setString(4, boardCreateDto.getCategory());
-            pst.setString(5, boardCreateDto.getStatus());
+            pst.setString(2, boardCreateDto.getTitle());
+            pst.setInt(3, boardCreateDto.getPrice());
+            pst.setString(4, boardCreateDto.getContent());
+            pst.setString(5, boardCreateDto.getCategory());
+            pst.setString(6, boardCreateDto.getStatus());
 
             if (pst.executeUpdate() == 0) {
                 throw new SQLException("게시글 저장에 실패했습니다.");

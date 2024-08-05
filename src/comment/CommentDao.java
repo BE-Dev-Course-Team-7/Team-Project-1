@@ -1,6 +1,7 @@
 package comment;
 
-import day0805.src.member.Member;
+
+import member.Member;
 
 public interface CommentDao {
 
