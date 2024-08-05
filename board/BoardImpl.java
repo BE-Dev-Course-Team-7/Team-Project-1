@@ -52,11 +52,30 @@ public class BoardImpl implements BoardDao {
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
-        return boardList.toArray(new BoardListDto[0]);
+        return new BoardListDto[0];
     }
 
     @Override
     public BoardListDto[] getOnSaleBoards() {
+        String sql = "SELECT * FROM board WHERE status = ONSALE";
+        List<BoardListDto> boardList = new ArrayList<>();
+        try (Connection conn = db.getConnection();
+             PreparedStatement pst = conn.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                BoardListDto board = new BoardListDto(
+                        rs.getInt("id"),
+                        rs.getInt("member_id"),
+                        rs.getString("title"),
+                        rs.getInt("price"),
+                        rs.getString("category"),
+                        rs.getString("status"),
+                        rs.getTimestamp("post_date").toLocalDateTime());
+                boardList.add(board);
+            }
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
         return new BoardListDto[0];
     }
 
