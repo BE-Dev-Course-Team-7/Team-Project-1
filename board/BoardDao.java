@@ -6,12 +6,12 @@ public interface BoardDao {
     void createBoard(BoardCreateDto boardCreateDto);
     BoardListDto[] getAllBoards();
     BoardListDto[] getOnSaleBoards();
-    BoardListDto[] getBoardsByTitle();
-    BoardListDto[] getBoardsByCategory();
-    BoardListDto[] getBoardsByWriter();
+    BoardListDto[] getBoardsByTitle(String title);
+    BoardListDto[] getBoardsByCategory(String category);
+    BoardListDto[] getBoardsByWriter(String name);
     BoardDto getBoard(int id);
-    
-    //수정할 항목을 선택하세요 1.제목 2.가격 3.내용
-    void updateBoard(int option, String content);
+    void updateBoardTitle(int id, String title);
+    void updateBoardPrice(int id, int price);
+    void updateBoardContent(int id, String content);
     void deleteBoard(int id);
 }
