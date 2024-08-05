@@ -33,6 +33,8 @@ public class BoardHeartImpl implements BoardHeartDao {
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DatabaseConnection.close(ps, conn);
         }
     }
 
@@ -44,9 +46,12 @@ public class BoardHeartImpl implements BoardHeartDao {
             conn = DatabaseConnection.getConnection();
             ps = conn.prepareStatement(sql);
 
-
+            ps.setInt(1, id);
+            ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DatabaseConnection.close(ps, conn);
         }
     }
 
@@ -70,6 +75,8 @@ public class BoardHeartImpl implements BoardHeartDao {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            DatabaseConnection.close(rs, ps, conn);
         }
         return list;
     }

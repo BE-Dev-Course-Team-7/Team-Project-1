@@ -1,7 +1,5 @@
 package board;
 
-
-
 import JDBC.DatabaseConnection;
 
 import java.sql.Connection;
