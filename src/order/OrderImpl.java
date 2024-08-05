@@ -1,6 +1,6 @@
 package order;
 
-import jdbc.DatabaseConnection;
+import JDBC.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class OrderImpl implements OrderDao{
 
     @Override
     public int insertOrder(Order order) {
-        String insertOrderSql = "INSERT INTO ORDERS (BOARD_ID, MEMBER_ID, TOTAL_PRICE, ORDER_DATE) VALUES (?, ?, ?, ?)";
+        String insertOrderSql = "INSERT INTO ORDERS (BOARD_ID, MEMBER_ID, TOTAL_PRICE) VALUES (?, ?, ?)";
         String updateBoardSql = "UPDATE BOARD SET STATUS = '판매 완료' WHERE ID = ?";
 
         Connection con = null;
@@ -27,7 +27,7 @@ public class OrderImpl implements OrderDao{
             insertOrderPstmt.setInt(1, order.getBoardId());
             insertOrderPstmt.setInt(2, order.getMemberId());
             insertOrderPstmt.setInt(3, order.getPrice());
-            insertOrderPstmt.setTimestamp(4, order.getOrderDate());
+//            insertOrderPstmt.setTimestamp(4, order.getOrderDate());
             int row = insertOrderPstmt.executeUpdate();
 
             if (row > 0) {
@@ -90,12 +90,6 @@ public class OrderImpl implements OrderDao{
 
                 Order order = new Order(id, boardId, memberId, price, orderDate);
                 orderList.add(order);
-
-                System.out.println("Order ID: " + id +
-                        ", Board ID: " + boardId +
-                        ", Member ID: " + memberId +
-                        ", Price: " + price +
-                        ", Order Date: " + orderDate);
 
             }
         } catch (SQLException e) {

@@ -24,6 +24,8 @@ public class BoardDto {
         PostDate = postDate;
     }
 
+    public int getId() {return id;}
+
     public int getMemberId() {
         return memberId;
     }

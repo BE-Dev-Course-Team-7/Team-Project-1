@@ -9,4 +9,5 @@ public interface MemberDao {
     int updateName(Member member, String newName) throws SQLException;
     int updateLocation(Member member, String newLocation) throws SQLException;
     int deleteMember(Member member) throws SQLException;
+    String serachMember(int id);
 }

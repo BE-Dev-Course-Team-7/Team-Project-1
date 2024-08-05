@@ -11,6 +11,11 @@ public class BoardHeart {
         this.memberId = memberId;
     }
 
+    public BoardHeart(int boardId, int memberId) {
+        this.boardId = boardId;
+        this.memberId = memberId;
+    }
+
     public int getId() {
         return id;
     }

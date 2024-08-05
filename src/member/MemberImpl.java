@@ -1,11 +1,12 @@
 package member;
 
-import jdbc.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import JDBC.DatabaseConnection;
 
 public class MemberImpl implements MemberDao{
     private Connection conn;
@@ -135,5 +136,25 @@ public class MemberImpl implements MemberDao{
            DatabaseConnection.close(conn, pstmt);
        }
         return result;
+    }
+
+    @Override
+    public String serachMember(int id) {
+        try {
+            String sql = "SELECT NAME FROM MEMBER WHERE ID = ?";
+            conn = DatabaseConnection.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("NAME");
+            }
+        } catch (SQLException e) {
+            System.out.println("로그인 오류");
+        } finally {
+            DatabaseConnection.close(rs, conn, pstmt);
+        }
+        return "";
     }
 }

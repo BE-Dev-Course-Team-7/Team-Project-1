@@ -1,6 +1,6 @@
 package boardHeart;
 
-import jdbc.DatabaseConnection;
+import JDBC.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,8 +58,8 @@ public class BoardHeartImpl implements BoardHeartDao {
         try {
             conn = DatabaseConnection.getConnection();
             ps = conn.prepareStatement(sql);
-
             ps.setInt(1, memberId);
+            rs = ps.executeQuery();
             while (rs.next()) {
                 BoardHeart boardHeart = new BoardHeart(
                         rs.getInt("ID"),

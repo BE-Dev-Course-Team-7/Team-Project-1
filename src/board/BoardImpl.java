@@ -2,7 +2,7 @@ package board;
 
 
 
-import jdbc.DatabaseConnection;
+import JDBC.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -42,7 +42,7 @@ public class BoardImpl implements BoardDao {
 
     @Override
     public BoardListDto[] getOnSaleBoards() {
-        String sql = "SELECT * FROM board WHERE status = ONSALE";
+        String sql = "SELECT * FROM board WHERE status = 'ONSALE'";
         return getBoardList(sql);
     }
 
