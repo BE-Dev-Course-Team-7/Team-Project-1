@@ -34,4 +34,13 @@ public class BoardHeart {
     public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
+
+    @Override
+    public String toString() {
+        return "BoardHeart{" +
+                "id=" + id +
+                ", boardId=" + boardId +
+                ", memberId=" + memberId +
+                '}';
+    }
 }
