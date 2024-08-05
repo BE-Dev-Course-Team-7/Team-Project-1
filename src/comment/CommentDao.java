@@ -1,9 +1,11 @@
+package comment;
+
 import java.sql.SQLException;
 
 public interface CommentDao {
 
-    int addComment(Comment comment) throws SQLException;
-    int updateComment(Comment comment, Member member) throws SQLException;
-    int deleteComment(Comment comment, Member member) throws SQLException;
-    Comment[] getAllComments(int boardId) throws SQLException;
+    int addComment(Comment comment);
+    int updateComment(comment.Comment comment, Member member);
+    int deleteComment(comment.Comment comment, Member member);
+    Comment[] getAllComments(int boardId);
 }

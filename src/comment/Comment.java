@@ -1,3 +1,5 @@
+package comment;
+
 public class Comment {
     private int id;
     private int boardId;
@@ -46,7 +48,7 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" +
+        return "comment.Comment{" +
                 "id=" + id +
                 ", boardId=" + boardId +
                 ", memberId=" + memberId +

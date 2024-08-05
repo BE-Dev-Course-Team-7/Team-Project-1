@@ -1,3 +1,5 @@
+package comment;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +13,7 @@ public class CommentImpl implements CommentDao {
     private ResultSet rs;
 
     @Override
-    public int addComment(Comment comment) throws SQLException {
+    public int addComment(Comment comment) {
         int result = 0;
         try {
             String SQL = "INSERT INTO COMMENT(BOARD_ID, MEMBER_ID, CONTENT) VALUES(?, ?, ?)";
@@ -23,7 +25,6 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
-            throw e;
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -31,13 +32,13 @@ public class CommentImpl implements CommentDao {
     }
 
     @Override
-    public int updateComment(Comment comment, Member member) throws SQLException {
+    public int updateComment(Comment comment, Member member) {
         int result = 0;
         if(comment.getMemberId() != member.getId()) {
             return 0;
         }
         try {
-            String SQL = "INSERT INTO COMMENT(CONTENT) VALUES(?) WHERE ID = ?";
+            String SQL = "UPDATE COMMENT SET CONTENT = ? WHERE ID = ?";
             conn = DBUtil.getConnection();
             ps = conn.prepareStatement(SQL);
             ps.setString(1, comment.getContent());
@@ -45,7 +46,6 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
-            throw e;
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -53,7 +53,7 @@ public class CommentImpl implements CommentDao {
     }
 
     @Override
-    public int deleteComment(Comment comment, Member member) throws SQLException {
+    public int deleteComment(Comment comment, Member member) {
         int result = 0;
         if(comment.getMemberId() != member.getId()) {
             return 0;
@@ -66,7 +66,6 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
-            throw e;
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -74,13 +73,14 @@ public class CommentImpl implements CommentDao {
     }
 
     @Override
-    public Comment[] getAllComments(int boardId) throws SQLException {
+    public Comment[] getAllComments(int boardId) {
         List<Comment> list = new ArrayList<>();
         int result = 0;
         try {
-            String SQL = "SELECT * FROM COMMENT";
+            String SQL = "SELECT * FROM COMMENT WHERE BOARD_ID = ?";
             conn = DBUtil.getConnection();
             ps = conn.prepareStatement(SQL);
+            ps.setInt(1, boardId);
             rs = ps.executeQuery();
             while(rs.next()) {
                 Comment comment = new Comment(rs.getInt(2),rs.getInt(3),rs.getString(4));
@@ -89,7 +89,6 @@ public class CommentImpl implements CommentDao {
             }
         } catch(SQLException e) {
             e.printStackTrace();
-            throw e;
         } finally {
             DBUtil.close(ps, conn);
         }
