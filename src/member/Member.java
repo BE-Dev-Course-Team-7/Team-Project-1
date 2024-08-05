@@ -1,5 +1,5 @@
 
-package day0805.src.member;
+package member;
 
 import java.sql.Timestamp;
 

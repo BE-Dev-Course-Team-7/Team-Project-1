@@ -1,4 +1,4 @@
-package day0805.src.boardHeart;
+package boardHeart;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package day0805.src.board;
+package board;
 
 public class Board {
     private int id;

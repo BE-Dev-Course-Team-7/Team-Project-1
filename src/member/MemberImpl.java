@@ -1,4 +1,4 @@
-package day0805.src.member;
+package member;
 
 import day0805.JDBC.DatabaseConnection;
 

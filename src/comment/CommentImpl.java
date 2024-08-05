@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import day0805.JDBC.DatabaseConnection;
+import day0805.src.member.Member;
 
 public class CommentImpl implements CommentDao {
     private Connection conn;

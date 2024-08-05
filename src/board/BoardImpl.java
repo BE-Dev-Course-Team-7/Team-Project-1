@@ -1,4 +1,4 @@
-package day0805.src.board;
+package board;
 
 
 import day0805.JDBC.DatabaseConnection;

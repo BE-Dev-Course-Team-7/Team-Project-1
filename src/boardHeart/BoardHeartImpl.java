@@ -1,4 +1,4 @@
-package day0805.src.boardHeart;
+package boardHeart;
 
 import day0805.JDBC.DatabaseConnection;
 

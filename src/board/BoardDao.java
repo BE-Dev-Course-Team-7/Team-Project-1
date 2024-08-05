@@ -1,6 +1,5 @@
-package day0805.src.board;
+package board;
 
-import day01.Member;
 
 public interface BoardDao {
     void createBoard(BoardCreateDto boardCreateDto);
