@@ -1,5 +1,7 @@
 package day0805.src.member;
 
+import day0805.JDBC.DatabaseConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +17,7 @@ public class MemberImpl implements MemberDao{
         int result = 0;
         try {
             String SQL = "INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,LOCATION) VALUES(?,?,?,?)";
-            conn = DBUtil.getConnection();
+            conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, member.getAccount());
             pstmt.setString(2, member.getPassword());
@@ -26,7 +28,7 @@ public class MemberImpl implements MemberDao{
             System.out.println("insert error");
             throw e;
         } finally {
-            DBUtil.close(conn, pstmt);
+            DatabaseConnection.close(conn, pstmt);
         }
         return result;
     }
@@ -36,7 +38,7 @@ public class MemberImpl implements MemberDao{
         Member member = null;
         try {
             String sql = "SELECT ACCOUNT FROM MEMBER WHERE ACCOUNT=" + account + " AND PASSWORD=" + password;
-            conn = DBUtil.getConnection();
+            conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             member = new Member();
@@ -44,7 +46,7 @@ public class MemberImpl implements MemberDao{
             System.out.println("login error");
             throw e;
         } finally {
-            DBUtil.close(rs, conn, pstmt);
+            DatabaseConnection.close(rs, conn, pstmt);
         }
         return member;
     }
@@ -54,7 +56,7 @@ public class MemberImpl implements MemberDao{
         int result = 0;
         try {
             String SQL = "UPDATE MEMBER SET PASSWORD=? WHERE ID=?";
-            conn = DBUtil.getConnection();
+            conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, newPassword);
             pstmt.setInt(2, member.getId());
@@ -63,7 +65,7 @@ public class MemberImpl implements MemberDao{
             System.out.println("updatePassword error");
             throw e;
         } finally {
-            DBUtil.close(conn, pstmt);
+            DatabaseConnection.close(conn, pstmt);
         }
         return result;
     }
@@ -73,7 +75,7 @@ public class MemberImpl implements MemberDao{
         int result = 0;
         try {
             String SQL = "UPDATE MEMBER SET NAME=? WHERE ID=?";
-            conn = DBUtil.getConnection();
+            conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, newName);
             pstmt.setInt(2, member.getId());
@@ -82,7 +84,7 @@ public class MemberImpl implements MemberDao{
             System.out.println("updateName error");
             throw e;
         } finally {
-            DBUtil.close(conn, pstmt);
+            DatabaseConnection.close(conn, pstmt);
         }
         return result;
     }
@@ -92,7 +94,7 @@ public class MemberImpl implements MemberDao{
         int result = 0;
         try {
             String SQL = "UPDATE MEMBER SET LOCATION=? WHERE ID=?";
-            conn = DBUtil.getConnection();
+            conn = DatabaseConnection.getConnection();
             pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, newLocation);
             pstmt.setInt(2, member.getId());
@@ -101,7 +103,7 @@ public class MemberImpl implements MemberDao{
             System.out.println("updateLocation error");
             throw e;
         } finally {
-            DBUtil.close(conn, pstmt);
+            DatabaseConnection.close(conn, pstmt);
         }
         return result;
     }
@@ -111,7 +113,7 @@ public class MemberImpl implements MemberDao{
        int result = 0;
        try {
            String SQL = "DELETE FROM MEMBER WHERE ID=?";
-           conn = DBUtil.getConnection();
+           conn = DatabaseConnection.getConnection();
            pstmt = conn.prepareStatement(SQL);
            pstmt.setInt(1, member.getId());
            result = pstmt.executeUpdate();
@@ -120,7 +122,7 @@ public class MemberImpl implements MemberDao{
            System.out.println("deleteMember error");
            throw e;
        } finally {
-           DBUtil.close(conn, pstmt);
+           DatabaseConnection.close(conn, pstmt);
        }
         return result;
     }

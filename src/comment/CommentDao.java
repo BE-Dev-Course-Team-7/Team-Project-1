@@ -1,6 +1,6 @@
 package comment;
 
-import java.sql.SQLException;
+import day0805.src.member.Member;
 
 public interface CommentDao {
 
