@@ -1,27 +1,20 @@
-package day0805.board;
+package day0805.src.board;
 
-import java.time.LocalDateTime;
-
-public class BoardDto {
-    private int id;
+public class BoardCreateDto {
     private int memberId;
     private String title;
     private int price;
     private String content;
     private String category;
     private String status;
-    private LocalDateTime PostDate;
 
-
-    public BoardDto(int id, int memberId, String title, int price, String content, String category, String status, LocalDateTime postDate) {
-        this.id = id;
+    public BoardCreateDto(int memberId, String title, int price, String content, String category, String status) {
         this.memberId = memberId;
         this.title = title;
         this.price = price;
         this.content = content;
         this.category = category;
         this.status = status;
-        PostDate = postDate;
     }
 
     public int getMemberId() {
@@ -47,9 +40,4 @@ public class BoardDto {
     public String getStatus() {
         return status;
     }
-
-    public LocalDateTime getPostDate() {
-        return PostDate;
-    }
 }
-

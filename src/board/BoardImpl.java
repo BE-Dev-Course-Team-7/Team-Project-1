@@ -1,4 +1,4 @@
-package day0805.board;
+package day0805.src.board;
 
 
 import day0805.db.DBUtil;
