@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="924b885b-79d4-40fe-9da2-bd4658e78cb9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/BoardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/board/BoardListDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/board/BoardListDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comment/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comment/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comment/CommentImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/order/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/order/OrderDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/order/OrderImpl.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "git-widget-placeholder": "main",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="day0805.src.day0805.Main" />
+      <module name="Team-Project-1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="day0805.src.day0805.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
 </project>

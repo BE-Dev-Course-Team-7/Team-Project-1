@@ -1,5 +1,7 @@
 package order;
 
+import day0805.JDBC.DatabaseConnection;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class OrderImpl implements OrderDao{
             throw new RuntimeException(e);
         }finally {
 
-            DatabaseConnection.closeConnection(con);
+            DatabaseConnection.close(con);
             if (insertOrderSql != null) {
                 try {
                     insertOrderPstmt.close();
