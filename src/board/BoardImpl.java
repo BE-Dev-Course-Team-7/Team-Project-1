@@ -1,20 +1,21 @@
 package day0805.src.board;
 
 
-import day0805.db.DBUtil;
+import day0805.JDBC.DatabaseConnection;
 
-import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoardImpl implements BoardDao {
-    DBUtil db = DBUtil.getInstance();
 
     @Override
     public void createBoard(BoardCreateDto boardCreateDto) {
         String sql = "INSERT INTO board (member_id, price, content, category, status) VALUES (?, ?, ?, ?, ?)";
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, boardCreateDto.getMemberId());
             pst.setInt(2, boardCreateDto.getPrice());
@@ -22,11 +23,11 @@ public class BoardImpl implements BoardDao {
             pst.setString(4, boardCreateDto.getCategory());
             pst.setString(5, boardCreateDto.getStatus());
 
-            if (pst.executeUpdate() != 0) {
+            if (pst.executeUpdate() == 0) {
                 throw new SQLException("게시글 저장에 실패했습니다.");
             }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -46,7 +47,7 @@ public class BoardImpl implements BoardDao {
 
     private BoardListDto[] getBoardList(String sql) {
         List<BoardListDto> boardList = new ArrayList<>();
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
@@ -60,7 +61,7 @@ public class BoardImpl implements BoardDao {
                         rs.getTimestamp("post_date").toLocalDateTime());
                 boardList.add(board);
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return boardList.toArray(new BoardListDto[0]);
@@ -86,7 +87,7 @@ public class BoardImpl implements BoardDao {
 
     private BoardListDto[] getBoardsByParam(String param, String sql) {
         List<BoardListDto> boardList = new ArrayList<>();
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setString(1, "%" + param + "%");
             try (ResultSet rs = pst.executeQuery()) {
@@ -102,7 +103,7 @@ public class BoardImpl implements BoardDao {
                     boardList.add(board);
                 }
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return boardList.toArray(new BoardListDto[0]);
@@ -111,7 +112,7 @@ public class BoardImpl implements BoardDao {
     @Override
     public BoardDto getBoard(int id) {
         String sql = "SELECT * FROM board WHERE id = ?";
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, id);
             try (ResultSet rs = pst.executeQuery()) {
@@ -125,12 +126,11 @@ public class BoardImpl implements BoardDao {
                             rs.getString("category"),
                             rs.getString("status").toUpperCase(),
                             rs.getTimestamp("post_date").toLocalDateTime());
-                }
-                else {
+                } else {
                     throw new RuntimeException("id에 해당하는 게시글을 찾을 수 없습니다.");
                 }
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("데이터베이스 오류가 발생했습니다.");
         }
@@ -160,7 +160,7 @@ public class BoardImpl implements BoardDao {
         if (!isBoardOnSale(id)) {
             throw new RuntimeException("게시글이 판매중이 아닙니다.");
         }
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             if (param instanceof String) {
                 pst.setString(1, (String) param);
@@ -169,15 +169,14 @@ public class BoardImpl implements BoardDao {
             }
             pst.setInt(2, id);
 
-            if (pst.executeUpdate() != 0) {
+            if (pst.executeUpdate() == 0) {
                 throw new RuntimeException("id에 해당하는 게시글을 찾을 수 없습니다.");
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("데이터베이스 오류가 발생했습니다.");
         }
     }
-
 
 
     @Override
@@ -187,13 +186,13 @@ public class BoardImpl implements BoardDao {
             throw new RuntimeException("게시글이 판매중이 아닙니다.");
         }
         String sql = "DELETE FROM board WHERE id = ?";
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, id);
-            if (pst.executeUpdate() != 0) {
+            if (pst.executeUpdate() == 0) {
                 throw new RuntimeException("id에 해당하는 게시글을 찾을 수 없습니다.");
             }
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException("데이터베이스 오류가 발생했습니다.");
         }
@@ -201,7 +200,7 @@ public class BoardImpl implements BoardDao {
 
     private boolean isBoardOnSale(int id) {
         String sql = "SELECT status FROM board WHERE id = ?";
-        try (Connection conn = db.getConnection();
+        try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql)) {
             pst.setInt(1, id);
             try (ResultSet rs = pst.executeQuery()) {
@@ -210,11 +209,8 @@ public class BoardImpl implements BoardDao {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("SQL 오류: " + e.getMessage());
             e.printStackTrace();
-        } catch (IOException e) {
-            System.err.println("IO 오류: " + e.getMessage());
-            e.printStackTrace();
+            throw new RuntimeException("데이터베이스 오류가 발생했습니다.");
         }
         return false;
     }
