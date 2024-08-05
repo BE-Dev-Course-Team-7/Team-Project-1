@@ -17,7 +17,7 @@ public class OrderImpl implements OrderDao{
         int generatedId =  0;
 
         try {
-            con = DbUtils.getConnection();
+            con = DatabaseConnection.getConnection();
             con.setAutoCommit(false); // 트랜잭션 시작
 
             // 기본키를 알아야 board에 사용가능
@@ -45,7 +45,8 @@ public class OrderImpl implements OrderDao{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }finally {
-            DbUtils.closeConnection(con);
+
+            DatabaseConnection.closeConnection(con);
             if (insertOrderSql != null) {
                 try {
                     insertOrderPstmt.close();
@@ -71,7 +72,7 @@ public class OrderImpl implements OrderDao{
 
         Connection con = null;
         try {
-            con = DbUtils.getConnection();
+            con = DatabaseConnection.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
 
             pstmt.setInt(1, member_Id);
@@ -107,7 +108,7 @@ public class OrderImpl implements OrderDao{
         String sql = "SELECT * FROM ORDERS";
 
         try {
-            Connection con = DbUtils.getConnection();
+            Connection con = DatabaseConnection.getConnection();
             PreparedStatement pstmt = con.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
 
