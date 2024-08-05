@@ -1,4 +1,4 @@
-package day0805.member;
+package day0805.src.member;
 
 import java.sql.SQLException;
 
