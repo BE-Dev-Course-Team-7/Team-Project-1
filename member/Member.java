@@ -11,6 +11,10 @@ public class Member {
     private String location;
     private Timestamp joinDate;
 
+    public Member() {
+
+    }
+
     public Member(String account, String password, String name, String location) {
         this.account = account;
         this.password = password;
