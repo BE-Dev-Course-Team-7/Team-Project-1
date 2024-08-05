@@ -25,6 +25,7 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error addComment", e);
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -46,6 +47,7 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error updateComment", e);
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -66,6 +68,7 @@ public class CommentImpl implements CommentDao {
             result = ps.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error deleteComment", e);
         } finally {
             DBUtil.close(ps, conn);
         }
@@ -89,6 +92,7 @@ public class CommentImpl implements CommentDao {
             }
         } catch(SQLException e) {
             e.printStackTrace();
+            throw new RuntimeException("Error getAllComments", e);
         } finally {
             DBUtil.close(ps, conn);
         }
